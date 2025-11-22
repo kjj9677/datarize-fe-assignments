@@ -6,7 +6,7 @@ interface EmptyStateProps {
 
 const EmptyState = ({ message }: EmptyStateProps) => {
   return (
-    <div className="flex items-center justify-center h-full">
+    <div className="flex items-center justify-center h-full" role="status">
       <Text color="text-gray-500">{message}</Text>
     </div>
   )
