@@ -8,8 +8,16 @@ export const customerPurchasesQueryOptions = (customerId: number) =>
     queryFn: () => fetchCustomerPurchases(customerId),
   })
 
-export const useCustomerPurchases = (customerId: number | null) =>
-  useQuery({
-    ...customerPurchasesQueryOptions(customerId!),
-    enabled: customerId !== null,
+export const useCustomerPurchases = (customerId: number | null) => {
+  const hasCustomerId = customerId !== null
+
+  return useQuery({
+    queryKey: hasCustomerId
+      ? queryKeys.customerPurchases.detail(customerId)
+      : (['customerPurchases', 'none'] as const),
+    queryFn: hasCustomerId
+      ? () => fetchCustomerPurchases(customerId)
+      : () => Promise.resolve([]),
+    enabled: hasCustomerId,
   })
+}

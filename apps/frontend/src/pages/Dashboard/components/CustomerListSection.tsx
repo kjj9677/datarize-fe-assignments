@@ -10,7 +10,7 @@ import Text from '@/components/base/Text'
 
 const CustomerListSection = () => {
   const [searchInput, setSearchInput] = useState('')
-  const [sortOrder, setSortOrder] = useState<SortOrder>(null)
+  const [sortOrder, setSortOrder] = useState<SortOrder | undefined>(undefined)
 
   const debouncedSearch = useDebounce(searchInput, 300)
 
@@ -48,7 +48,7 @@ const CustomerListSection = () => {
             <Select
               id="sort-order"
               value={sortOrder ?? ''}
-              onChange={(e) => setSortOrder(e.target.value === '' ? null : (e.target.value as SortOrder))}
+              onChange={(e) => setSortOrder(e.target.value === '' ? undefined : (e.target.value as SortOrder))}
               aria-label="정렬 순서"
             >
               <option value="">ID순</option>

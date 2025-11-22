@@ -6,7 +6,7 @@ import EmptyState from '@/components/base/EmptyState'
 interface DataStateHandlerProps<TData> {
   data: TData[] | undefined
   isLoading: boolean
-  error: Error | null
+  error: unknown
   emptyMessage: string
   render: (data: TData[]) => ReactNode
 }
@@ -23,7 +23,8 @@ const DataStateHandler = <TData,>({
   }
 
   if (error) {
-    return <ErrorMessage message={error.message} />
+    const errorMessage = error instanceof Error ? error.message : '알 수 없는 오류가 발생했습니다'
+    return <ErrorMessage message={errorMessage} />
   }
 
   if (!data || data.length === 0) {
