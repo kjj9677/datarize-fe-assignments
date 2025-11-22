@@ -1,4 +1,4 @@
-export type SortOrder = 'asc' | 'desc'
+export type SortOrder = 'asc' | 'desc' | null
 
 export interface PriceRangeData {
   range: string

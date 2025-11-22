@@ -4,7 +4,7 @@ import { CustomerData, PurchaseDetail, SortOrder } from '@/api/types'
 export async function fetchCustomers(sortBy?: SortOrder, name?: string): Promise<CustomerData[]> {
   const params: Record<string, string | undefined> = {}
 
-  if (sortBy) params.sortBy = sortBy
+  if (sortBy !== null && sortBy !== undefined) params.sortBy = sortBy
   if (name) params.name = name
 
   return apiGet<CustomerData[]>('/customers', params)
