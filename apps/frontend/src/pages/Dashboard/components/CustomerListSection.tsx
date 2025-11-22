@@ -14,7 +14,7 @@ const CustomerListSection = () => {
 
   const debouncedSearch = useDebounce(searchInput, 300)
 
-  const { data, isLoading, error } = useCustomers(sortOrder, debouncedSearch || undefined)
+  const { data: customers, isLoading, error } = useCustomers(sortOrder, debouncedSearch || undefined)
 
   return (
     <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-full w-[40%]">
@@ -60,11 +60,11 @@ const CustomerListSection = () => {
       </fieldset>
 
       <DataStateHandler
-        data={data}
+        data={customers}
         isLoading={isLoading}
         error={error}
         emptyMessage="고객 데이터가 없습니다"
-        render={(data) => <CustomerList customers={data} />}
+        render={(customers) => <CustomerList customers={customers} />}
       />
     </section>
   )

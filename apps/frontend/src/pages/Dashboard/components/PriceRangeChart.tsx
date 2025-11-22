@@ -3,13 +3,13 @@ import { PriceRangeData } from '@/api/types'
 import { formatPriceRange } from '@/utils/priceFormatter'
 
 interface PriceRangeChartProps {
-  data: PriceRangeData[]
+  purchaseFrequency: PriceRangeData[]
 }
 
 const BAR_COLOR = '#3b82f6'
 
-const PriceRangeChart = ({ data }: PriceRangeChartProps) => {
-  const chartData = data.map((item) => ({
+const PriceRangeChart = ({ purchaseFrequency }: PriceRangeChartProps) => {
+  const chartData = purchaseFrequency.map((item) => ({
     range: formatPriceRange(item.range),
     count: item.count,
     fullRange: item.range,
@@ -40,7 +40,7 @@ const PriceRangeChart = ({ data }: PriceRangeChartProps) => {
             }}
             formatter={(value: number) => [`${value}개`, '구매 수량']}
           />
-          <Bar dataKey="count" radius={[8, 8, 0, 0]} fill={BAR_COLOR} />
+          <Bar dataKey="count" radius={[4, 4, 0, 0]} fill={BAR_COLOR} barSize={40} />
         </BarChart>
       </ResponsiveContainer>
     </div>

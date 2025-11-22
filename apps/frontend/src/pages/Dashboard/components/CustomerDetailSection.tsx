@@ -7,7 +7,7 @@ import Text from '@/components/base/Text'
 
 const CustomerDetailSection = () => {
   const selectedCustomerId = useCustomerStore((state) => state.selectedCustomerId)
-  const { data, isLoading, error } = useCustomerPurchases(selectedCustomerId)
+  const { data: purchases, isLoading, error } = useCustomerPurchases(selectedCustomerId)
 
   return (
     <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-full w-[60%]">
@@ -22,11 +22,11 @@ const CustomerDetailSection = () => {
         <EmptyState message="고객을 선택하세요" />
       ) : (
         <DataStateHandler
-          data={data}
+          data={purchases}
           isLoading={isLoading}
           error={error}
           emptyMessage="구매 내역이 없습니다"
-          render={(data) => <PurchaseHistoryTable purchases={data} />}
+          render={(purchases) => <PurchaseHistoryTable purchases={purchases} />}
         />
       )}
     </section>

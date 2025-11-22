@@ -10,7 +10,7 @@ const PurchaseFrequencySection = () => {
   const [startDate, setStartDate] = useState<Date>(DATA_DATE_RANGE.START)
   const [endDate, setEndDate] = useState<Date>(DATA_DATE_RANGE.END)
 
-  const { data, isLoading, error } = usePurchaseFrequency(startDate, endDate)
+  const { data: purchaseFrequency, isLoading, error } = usePurchaseFrequency(startDate, endDate)
 
   const handleReset = () => {
     setStartDate(DATA_DATE_RANGE.START)
@@ -34,11 +34,11 @@ const PurchaseFrequencySection = () => {
       />
 
       <DataStateHandler
-        data={data}
+        data={purchaseFrequency}
         isLoading={isLoading}
         error={error}
         emptyMessage="선택한 기간에 구매 데이터가 없습니다"
-        render={(data) => <PriceRangeChart data={data} />}
+        render={(purchaseFrequency) => <PriceRangeChart purchaseFrequency={purchaseFrequency} />}
       />
     </section>
   )
