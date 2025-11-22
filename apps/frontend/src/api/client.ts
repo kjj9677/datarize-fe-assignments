@@ -1,6 +1,7 @@
 import { ApiError } from '@/api/errors'
 
-const API_BASE_URL = 'http://localhost:4000/api'
+const API_BASE_URL =
+  import.meta.env.MODE === 'development' ? 'http://localhost:4000/api' : import.meta.env.VITE_API_BASE_URL
 
 export async function apiGet<T>(endpoint: string, params?: Record<string, string | undefined>): Promise<T> {
   const url = new URL(`${API_BASE_URL}${endpoint}`)
