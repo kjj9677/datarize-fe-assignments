@@ -10,6 +10,6 @@ export const queryKeys = {
     filtered: (sortBy?: SortOrder, name?: string) => ['customers', { sortBy, name }] as const,
   },
   customerPurchases: {
-    detail: (customerId: number) => ['customerPurchases', customerId] as const,
+    detail: (customerId: number | null) => ['customerPurchases', customerId === null ? 'none' : customerId] as const,
   },
 }
