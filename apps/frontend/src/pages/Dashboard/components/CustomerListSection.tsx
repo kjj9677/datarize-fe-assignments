@@ -17,7 +17,7 @@ const CustomerListSection = () => {
   const { data: customers, isLoading, error } = useCustomers(sortOrder, debouncedSearch || undefined)
 
   return (
-    <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-full w-[40%]">
+    <section className="flex flex-col bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-[600px] w-[40%]">
       <Text as="h2" type="SUBTITLE" className="mb-2">
         고객별 구매금액
       </Text>

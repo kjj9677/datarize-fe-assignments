@@ -11,13 +11,7 @@ interface DataStateHandlerProps<TData> {
   render: (data: TData[]) => ReactNode
 }
 
-const DataStateHandler = <TData,>({
-  data,
-  isLoading,
-  error,
-  emptyMessage,
-  render,
-}: DataStateHandlerProps<TData>) => {
+const DataStateHandler = <TData,>({ data, isLoading, error, emptyMessage, render }: DataStateHandlerProps<TData>) => {
   if (isLoading) {
     return <LoadingIndicator />
   }

@@ -9,7 +9,7 @@ const Dashboard = () => {
       <Header />
       <main className="w-[1200px] p-8 space-y-6">
         <PurchaseFrequencySection />
-        <div className="flex gap-6 h-[600px]">
+        <div className="flex gap-6">
           <CustomerListSection />
           <CustomerDetailSection />
         </div>

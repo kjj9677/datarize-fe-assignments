@@ -18,7 +18,7 @@ const PurchaseFrequencySection = () => {
   }
 
   return (
-    <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <section className="flex flex-col bg-white rounded-lg shadow-sm border border-gray-200 p-6 h-[600px]">
       <Text as="h2" type="SUBTITLE" className="mb-2">
         가격대별 구매 빈도
       </Text>
@@ -37,7 +37,7 @@ const PurchaseFrequencySection = () => {
         data={purchaseFrequency}
         isLoading={isLoading}
         error={error}
-        emptyMessage="선택한 기간에 구매 데이터가 없습니다"
+        emptyMessage=""
         render={(purchaseFrequency) => <PriceRangeChart purchaseFrequency={purchaseFrequency} />}
       />
     </section>
