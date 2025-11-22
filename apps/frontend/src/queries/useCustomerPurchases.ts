@@ -1,6 +1,6 @@
 import { queryOptions, useQuery } from '@tanstack/react-query'
-import { fetchCustomerPurchases } from '../api/customers'
-import { queryKeys } from './queryKeys'
+import { fetchCustomerPurchases } from '@/api/customers'
+import { queryKeys } from '@/queries/queryKeys'
 
 export const customerPurchasesQueryOptions = (customerId: number) =>
   queryOptions({

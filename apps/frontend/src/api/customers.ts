@@ -1,7 +1,7 @@
-import { apiGet } from './client'
-import { CustomerData, PurchaseDetail } from './types'
+import { apiGet } from '@/api/client'
+import { CustomerData, PurchaseDetail, SortOrder } from '@/api/types'
 
-export async function fetchCustomers(sortBy?: 'asc' | 'desc', name?: string): Promise<CustomerData[]> {
+export async function fetchCustomers(sortBy?: SortOrder, name?: string): Promise<CustomerData[]> {
   const params: Record<string, string | undefined> = {}
 
   if (sortBy) params.sortBy = sortBy

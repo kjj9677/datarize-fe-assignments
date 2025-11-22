@@ -1,3 +1,5 @@
+import { SortOrder } from '@/api/types'
+
 export const queryKeys = {
   purchaseFrequency: {
     all: ['purchaseFrequency'] as const,
@@ -5,7 +7,7 @@ export const queryKeys = {
   },
   customers: {
     all: ['customers'] as const,
-    filtered: (sortBy?: 'asc' | 'desc', name?: string) => ['customers', { sortBy, name }] as const,
+    filtered: (sortBy?: SortOrder, name?: string) => ['customers', { sortBy, name }] as const,
   },
   customerPurchases: {
     detail: (customerId: number) => ['customerPurchases', customerId] as const,
