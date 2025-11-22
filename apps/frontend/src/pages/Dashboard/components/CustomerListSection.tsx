@@ -5,7 +5,7 @@ import { SortOrder } from '@/api/types'
 import CustomerList from './CustomerList'
 import CustomerFilterAndSorter from './CustomerFilterAndSorter'
 import DataStateHandler from './DataStateHandler'
-import Text from '@/components/base/Text'
+import DashboardSection from './DashboardSection'
 
 const CustomerListSection = () => {
   const [searchInput, setSearchInput] = useState('')
@@ -16,14 +16,11 @@ const CustomerListSection = () => {
   const { data: customers, isLoading, error } = useCustomers(sortOrder, debouncedSearch || undefined)
 
   return (
-    <section className="flex flex-col bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-[600px] w-[40%]">
-      <Text as="h2" type="SUBTITLE" className="mb-2">
-        고객별 구매금액
-      </Text>
-      <Text type="CAPTION" color="text-gray-500" className="mb-4">
-        고객별 총 구매금액과 구매횟수를 확인할 수 있습니다
-      </Text>
-
+    <DashboardSection
+      title="고객별 구매금액"
+      description="고객별 총 구매금액과 구매횟수를 확인할 수 있습니다"
+      containerStyle="w-[40%]"
+    >
       <CustomerFilterAndSorter
         searchInput={searchInput}
         sortOrder={sortOrder}
@@ -38,7 +35,7 @@ const CustomerListSection = () => {
         emptyMessage="고객 데이터가 없습니다"
         render={(customers) => <CustomerList customers={customers} />}
       />
-    </section>
+    </DashboardSection>
   )
 }
 

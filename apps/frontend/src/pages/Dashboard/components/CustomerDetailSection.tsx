@@ -2,23 +2,20 @@ import { useCustomerStore } from '@/stores/useCustomerStore'
 import { useCustomerPurchases } from '@/queries/useCustomerPurchases'
 import PurchaseHistoryTable from './PurchaseHistoryTable'
 import DataStateHandler from './DataStateHandler'
+import DashboardSection from './DashboardSection'
 import EmptyState from '@/components/base/EmptyState'
-import Text from '@/components/base/Text'
 
 const CustomerDetailSection = () => {
   const selectedCustomerId = useCustomerStore((state) => state.selectedCustomerId)
   const { data: purchases, isLoading, error } = useCustomerPurchases(selectedCustomerId)
-  const idText = selectedCustomerId ? ` - 고객 ID: ${selectedCustomerId}` : ''
+  const title = selectedCustomerId ? `구매 내역 - 고객 ID: ${selectedCustomerId}` : '구매 내역'
 
   return (
-    <section className="flex flex-col bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-[600px] w-[60%]">
-      <Text as="h2" type="SUBTITLE" className="mb-2">
-        구매 내역{idText}
-      </Text>
-      <Text type="CAPTION" color="text-gray-500" className="mb-4">
-        선택한 고객의 상세 구매 내역을 확인할 수 있습니다
-      </Text>
-
+    <DashboardSection
+      title={title}
+      description="선택한 고객의 상세 구매 내역을 확인할 수 있습니다"
+      containerStyle="w-[60%]"
+    >
       {!selectedCustomerId ? (
         <EmptyState message="고객을 선택하세요" />
       ) : (
@@ -34,7 +31,7 @@ const CustomerDetailSection = () => {
           )}
         />
       )}
-    </section>
+    </DashboardSection>
   )
 }
 
