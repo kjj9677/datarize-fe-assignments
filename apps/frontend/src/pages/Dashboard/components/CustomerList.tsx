@@ -25,8 +25,10 @@ const CustomerList = ({ customers }: CustomerListProps) => {
                 }
               }}
               aria-pressed={isSelected}
-              aria-label={`고객 선택: ${customer.name}, 구매 횟수 ${customer.count}회, 총 구매금액 ${customer.totalAmount.toLocaleString()}원`}
-              className={`w-full p-4 rounded-lg border transition-colors text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+              aria-label={`고객 선택: ${customer.name}, 구매 횟수 ${
+                customer.count
+              }회, 총 구매금액 ${customer.totalAmount.toLocaleString()}원`}
+              className={`w-full p-4 rounded-lg border transition-colors text-left ${
                 isSelected
                   ? 'border-blue-500 bg-blue-50'
                   : 'border-gray-200 bg-white hover:border-gray-300 hover:bg-gray-50'
