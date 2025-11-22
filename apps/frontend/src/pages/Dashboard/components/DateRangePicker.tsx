@@ -12,7 +12,7 @@ interface DateRangePickerProps {
 const DateRangePicker = ({ startDate, endDate, onStartDateChange, onEndDateChange, onReset }: DateRangePickerProps) => {
   return (
     <div className="flex items-center gap-4 flex-wrap">
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 w-[244px]">
         <label htmlFor="start-date" className="text-sm font-medium text-gray-700">
           시작일:
         </label>
@@ -31,7 +31,7 @@ const DateRangePicker = ({ startDate, endDate, onStartDateChange, onEndDateChang
         />
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 w-[244px]">
         <label htmlFor="end-date" className="text-sm font-medium text-gray-700">
           종료일:
         </label>
