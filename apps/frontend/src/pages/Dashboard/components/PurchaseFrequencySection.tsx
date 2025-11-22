@@ -4,19 +4,17 @@ import DateRangePicker from './DateRangePicker'
 import PriceRangeChart from './PriceRangeChart'
 import DataStateHandler from './DataStateHandler'
 import Text from '@/components/base/Text'
-
-const RANGE_START_DATE = new Date('2024-07-01')
-const RANGE_END_DATE = new Date('2024-07-31')
+import { DATA_DATE_RANGE } from '@/constants/dates'
 
 const PurchaseFrequencySection = () => {
-  const [startDate, setStartDate] = useState<Date>(RANGE_START_DATE)
-  const [endDate, setEndDate] = useState<Date>(RANGE_END_DATE)
+  const [startDate, setStartDate] = useState<Date>(DATA_DATE_RANGE.START)
+  const [endDate, setEndDate] = useState<Date>(DATA_DATE_RANGE.END)
 
   const { data, isLoading, error } = usePurchaseFrequency(startDate, endDate)
 
   const handleReset = () => {
-    setStartDate(RANGE_START_DATE)
-    setEndDate(RANGE_END_DATE)
+    setStartDate(DATA_DATE_RANGE.START)
+    setEndDate(DATA_DATE_RANGE.END)
   }
 
   return (
