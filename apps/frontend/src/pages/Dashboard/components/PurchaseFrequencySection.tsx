@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { usePurchaseFrequency } from '@/queries/usePurchaseFrequency'
 import DateRangePicker from './DateRangePicker'
-import PriceRangeChartArea from './PriceRangeChartArea'
+import PriceRangeChart from './PriceRangeChart'
+import DataStateHandler from './DataStateHandler'
 import Text from '@/components/base/Text'
 
 const RANGE_START_DATE = new Date('2024-07-01')
@@ -18,7 +19,6 @@ const PurchaseFrequencySection = () => {
     setEndDate(RANGE_END_DATE)
   }
 
-  console.log(data)
   return (
     <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <Text as="h2" type="SUBTITLE" className="mb-2">
@@ -35,7 +35,13 @@ const PurchaseFrequencySection = () => {
         onReset={handleReset}
       />
 
-      <PriceRangeChartArea data={data} isLoading={isLoading} error={error} />
+      <DataStateHandler
+        data={data}
+        isLoading={isLoading}
+        error={error}
+        emptyMessage="선택한 기간에 구매 데이터가 없습니다"
+        render={(data) => <PriceRangeChart data={data} />}
+      />
     </section>
   )
 }
