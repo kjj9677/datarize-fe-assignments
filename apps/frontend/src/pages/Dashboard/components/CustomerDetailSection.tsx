@@ -26,7 +26,11 @@ const CustomerDetailSection = () => {
           isLoading={isLoading}
           error={error}
           emptyMessage="구매 내역이 없습니다"
-          render={(purchases) => <PurchaseHistoryTable purchases={purchases} />}
+          render={(purchases) => (
+            <PurchaseHistoryTable
+              purchases={purchases.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())}
+            />
+          )}
         />
       )}
     </section>

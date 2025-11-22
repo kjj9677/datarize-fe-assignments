@@ -47,10 +47,10 @@ interface TableBodyProps {
 const TableBody = ({ purchases }: TableBodyProps) => {
   return (
     <tbody className="divide-y divide-gray-200">
-      {purchases.map((purchase, index) => {
+      {purchases.map((purchase) => {
         const { date, product, quantity, price, imgSrc } = purchase
         return (
-          <tr key={index} className="hover:bg-gray-50 focus-within:bg-gray-100">
+          <tr key={`${product}${date}`} className="hover:bg-gray-50 focus-within:bg-gray-100">
             <td className="px-4 py-3">
               <Text type="CAPTION" color="text-gray-600">
                 {new Date(date).toLocaleDateString('ko-KR')}
