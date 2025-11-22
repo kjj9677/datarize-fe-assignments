@@ -1,5 +1,6 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts'
 import { PriceRangeData } from '@/api/types'
+import { formatPriceRange } from '@/utils/priceFormatter'
 
 interface PriceRangeChartProps {
   data: PriceRangeData[]
@@ -7,18 +8,9 @@ interface PriceRangeChartProps {
 
 const COLORS = ['#3b82f6', '#60a5fa', '#93c5fd', '#bfdbfe', '#dbeafe', '#eff6ff', '#e0e7ff', '#c7d2fe', '#a5b4fc']
 
-const formatRange = (range: string) => {
-  if (range.includes('+')) {
-    const min = parseInt(range.replace('+', '')) / 10000
-    return `${min}만원 이상`
-  }
-  const [min, max] = range.split(' - ').map((n) => parseInt(n) / 10000)
-  return `${min}-${max}만원`
-}
-
 const PriceRangeChart = ({ data }: PriceRangeChartProps) => {
   const chartData = data.map((item) => ({
-    range: formatRange(item.range),
+    range: formatPriceRange(item.range),
     count: item.count,
     fullRange: item.range,
   }))
