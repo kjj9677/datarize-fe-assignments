@@ -1,0 +1,72 @@
+import { PurchaseDetail } from '@/api/types'
+import Text from '@/components/base/Text'
+
+interface PurchaseHistoryTableProps {
+  purchases: PurchaseDetail[]
+}
+
+const PurchaseHistoryTable = ({ purchases }: PurchaseHistoryTableProps) => {
+  return (
+    <div className="flex-1 overflow-y-auto">
+      <table className="w-full">
+        <thead className="bg-gray-50 sticky top-0">
+          <tr>
+            <th className="px-4 py-3 text-left">
+              <Text type="CAPTION" weight="semibold" color="text-gray-700">
+                날짜
+              </Text>
+            </th>
+            <th className="px-4 py-3 text-left">
+              <Text type="CAPTION" weight="semibold" color="text-gray-700">
+                상품
+              </Text>
+            </th>
+            <th className="px-4 py-3 text-center">
+              <Text type="CAPTION" weight="semibold" color="text-gray-700">
+                수량
+              </Text>
+            </th>
+            <th className="px-4 py-3 text-right">
+              <Text type="CAPTION" weight="semibold" color="text-gray-700">
+                금액
+              </Text>
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-200">
+          {purchases.map((purchase, index) => (
+            <tr key={index} className="hover:bg-gray-50">
+              <td className="px-4 py-3">
+                <Text type="CAPTION" color="text-gray-600">
+                  {new Date(purchase.date).toLocaleDateString('ko-KR')}
+                </Text>
+              </td>
+              <td className="px-4 py-3">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={purchase.imgSrc}
+                    alt={purchase.product}
+                    className="w-12 h-12 object-cover rounded border border-gray-200"
+                  />
+                  <Text type="CAPTION">{purchase.product}</Text>
+                </div>
+              </td>
+              <td className="px-4 py-3 text-center">
+                <Text type="CAPTION" color="text-gray-600">
+                  {purchase.quantity}개
+                </Text>
+              </td>
+              <td className="px-4 py-3 text-right">
+                <Text type="BODY" weight="semibold" color="text-gray-900">
+                  {purchase.price.toLocaleString()}원
+                </Text>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+export default PurchaseHistoryTable
