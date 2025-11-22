@@ -1,4 +1,4 @@
-export type SortOrder = 'asc' | 'desc' | null
+export type SortOrder = 'asc' | 'desc'
 
 export interface PriceRangeData {
   range: string
@@ -18,15 +18,4 @@ export interface PurchaseDetail {
   product: string
   price: number
   imgSrc: string
-}
-
-export class ApiError extends Error {
-  constructor(
-    message: string,
-    public status?: number,
-    public originalError?: unknown,
-  ) {
-    super(message)
-    this.name = 'ApiError'
-  }
 }

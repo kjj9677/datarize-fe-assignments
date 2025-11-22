@@ -1,4 +1,4 @@
-import { ApiError } from '@/api/types'
+import { ApiError } from '@/api/errors'
 
 const API_BASE_URL = 'http://localhost:4000/api'
 
