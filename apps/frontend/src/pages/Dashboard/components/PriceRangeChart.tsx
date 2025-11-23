@@ -49,7 +49,7 @@ const PriceRangeChart = ({ purchaseFrequency }: PriceRangeChartProps) => {
   return (
     <div role="img" aria-label={chartDescription}>
       <ResponsiveContainer width="100%" height={CHART_STYLES.height}>
-        <BarChart data={chartData} margin={CHART_STYLES.margin}>
+        <BarChart data={chartData} margin={CHART_STYLES.margin} tabIndex={-1}>
           <CartesianGrid strokeDasharray={CHART_STYLES.grid.strokeDasharray} stroke={CHART_STYLES.grid.stroke} />
           <XAxis
             dataKey="range"
@@ -63,7 +63,12 @@ const PriceRangeChart = ({ purchaseFrequency }: PriceRangeChartProps) => {
             label={CHART_STYLES.yAxisLabel}
           />
           <Tooltip contentStyle={CHART_STYLES.tooltip} formatter={(value: number) => [`${value}개`, '구매 수량']} />
-          <Bar dataKey="count" radius={CHART_STYLES.barRadius} fill={CHART_STYLES.barColor} barSize={CHART_STYLES.barSize} />
+          <Bar
+            dataKey="count"
+            radius={CHART_STYLES.barRadius}
+            fill={CHART_STYLES.barColor}
+            barSize={CHART_STYLES.barSize}
+          />
         </BarChart>
       </ResponsiveContainer>
     </div>
