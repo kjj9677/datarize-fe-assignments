@@ -1,14 +1,13 @@
 import { CustomerData } from '@/api/types'
-import { useCustomerStore } from '@/stores/useCustomerStore'
 import Text from '@/components/base/Text'
 
 interface CustomerListProps {
   customers: CustomerData[]
+  selectedCustomerId: number | null
+  onSelectCustomer: (id: number) => void
 }
 
-const CustomerList = ({ customers }: CustomerListProps) => {
-  const { selectedCustomerId, setSelectedCustomerId } = useCustomerStore()
-
+const CustomerList = ({ customers, selectedCustomerId, onSelectCustomer }: CustomerListProps) => {
   return (
     <ul role="list" className="flex-1 overflow-y-auto space-y-2">
       {customers.map((customer) => (
@@ -16,7 +15,7 @@ const CustomerList = ({ customers }: CustomerListProps) => {
           key={customer.id}
           customer={customer}
           isSelected={selectedCustomerId === customer.id}
-          onSelect={setSelectedCustomerId}
+          onSelect={onSelectCustomer}
         />
       ))}
     </ul>

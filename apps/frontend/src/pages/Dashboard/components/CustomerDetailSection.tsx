@@ -1,4 +1,4 @@
-import { useCustomerStore } from '@/stores/useCustomerStore'
+import { useQueryParams } from 'react-url-params-state'
 import { useCustomerPurchases } from '@/queries/useCustomerPurchases'
 import PurchaseHistoryTable from './PurchaseHistoryTable'
 import DataStateHandler from './DataStateHandler'
@@ -6,7 +6,8 @@ import DashboardSection from './DashboardSection'
 import EmptyState from '@/components/base/EmptyState'
 
 const CustomerDetailSection = () => {
-  const selectedCustomerId = useCustomerStore((state) => state.selectedCustomerId)
+  const [params] = useQueryParams({ customerId: 'number' })
+  const selectedCustomerId = params.customerId ?? null
   const { data: purchases, isLoading, error } = useCustomerPurchases(selectedCustomerId)
   const title = selectedCustomerId ? `구매 내역 - 고객 ID: ${selectedCustomerId}` : '구매 내역'
 
