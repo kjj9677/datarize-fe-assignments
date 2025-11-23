@@ -1,7 +1,12 @@
 import { SortOrder } from '@/api/types'
 import Input from '@/components/base/Input'
-import Select from '@/components/base/Select'
+import Select, { type SelectOption } from '@/components/base/Select'
 
+const SORT_OPTIONS: SelectOption[] = [
+  { value: '', label: 'ID순' },
+  { value: 'desc', label: '금액 높은순' },
+  { value: 'asc', label: '금액 낮은순' },
+]
 interface CustomerFilterAndSorterProps {
   searchInput: string
   sortOrder: SortOrder | undefined
@@ -41,11 +46,8 @@ const CustomerFilterAndSorter = ({
             value={sortOrder ?? ''}
             onChange={(e) => onSortChange(e.target.value === '' ? undefined : (e.target.value as SortOrder))}
             aria-label="정렬 순서"
-          >
-            <option value="">ID순</option>
-            <option value="desc">금액 높은순</option>
-            <option value="asc">금액 낮은순</option>
-          </Select>
+            options={SORT_OPTIONS}
+          />
         </div>
       </div>
     </fieldset>
