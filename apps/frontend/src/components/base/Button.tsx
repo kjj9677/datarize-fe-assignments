@@ -1,3 +1,4 @@
+import { cn } from '@/utils/className'
 import React from 'react'
 
 export type ButtonVariant = 'primary' | 'secondary'
@@ -31,15 +32,13 @@ const Button = ({
   const baseStyles = 'font-medium rounded-md'
   const disabledStyles = 'cursor-not-allowed'
 
-  const combinedClassName = [
+  const combinedClassName = cn(
     baseStyles,
     variantStyles[variant],
     sizeStyles[size],
     disabled ? disabledStyles : '',
     className,
-  ]
-    .filter(Boolean)
-    .join(' ')
+  )
 
   return (
     <button type={type} className={combinedClassName} disabled={disabled} {...rest}>
